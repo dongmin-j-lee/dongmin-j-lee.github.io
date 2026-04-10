@@ -20,8 +20,7 @@ button {
   box-shadow: 0 2px 8px rgba($indigo, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  &:hover,
-  &:focus {
+  &:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba($indigo, 0.4);
     color: #fff;
@@ -29,6 +28,7 @@ button {
 
   &:focus {
     outline: none;
+    color: #fff;
   }
   &:focus-visible {
     outline: 2px solid $indigo-dark;

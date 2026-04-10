@@ -7,8 +7,6 @@ $b3: 480px;
 $mobile: $b3;
 $b2: 768px;
 $tablet: $b2;
-$b1: 960px;
-$desktop: $b1;
 
 /*
 *	Globals
@@ -616,15 +614,18 @@ pre code.hljs {
 	a {
 	  color: $link-color;
 	  transition: color 0.2s ease, opacity 0.2s ease;
-	  &:active,
-	  &:focus,
 	  &:hover {
 	    color: $white;
 	    opacity: 1;
 	    text-decoration: none;
 	  }
+	  &:active {
+	    color: $white;
+	    opacity: 0.9;
+	  }
 	  &:focus {
 	    outline: none;
+	    color: $white;
 	  }
 	  &:focus-visible {
 	    outline: 2px solid rgba($white, 0.8);
