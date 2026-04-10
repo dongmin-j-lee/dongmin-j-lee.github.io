@@ -431,7 +431,6 @@ pre code.hljs {
 			padding-bottom: 1em;
 		}
 		.post-content {
-			padding: 1.5em 0;
 			background: $white;
 			border-radius: $base-border-radius;
 			padding: 2em;
@@ -702,17 +701,6 @@ pre code.hljs {
 	25% { transform: translate(2%, -2%); }
 	50% { transform: translate(-1%, 3%); }
 	75% { transform: translate(3%, 1%); }
-}
-
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
 /*
