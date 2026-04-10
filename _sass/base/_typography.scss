@@ -53,16 +53,20 @@ a {
   text-decoration: none;
   transition: color 0.2s ease, opacity 0.2s ease;
 
-  &:active,
-  &:focus,
   &:hover {
     color: $indigo-dark;
     text-decoration: none;
     opacity: 0.85;
   }
 
+  &:active {
+    color: $indigo-dark;
+    opacity: 0.75;
+  }
+
   &:focus {
     outline: none;
+    color: $indigo-dark;
   }
   &:focus-visible {
     outline: 2px solid $indigo;

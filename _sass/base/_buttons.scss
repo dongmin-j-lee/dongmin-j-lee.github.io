@@ -27,6 +27,14 @@ button {
     color: #fff;
   }
 
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    outline: 2px solid $indigo-dark;
+    outline-offset: 2px;
+  }
+
   &:active {
     transform: translateY(0);
     box-shadow: 0 1px 4px rgba($indigo, 0.3);
