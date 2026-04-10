@@ -2,48 +2,44 @@
 button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
-  background: $gradient-primary;
+  background-color: $accent;
   border-radius: $button-border-radius;
   border: none;
-  color: #fff;
+  color: $bg-primary;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: 0.875em;
   font-weight: 600;
   line-height: 1;
-  padding: 0.75em 1.5em;
+  padding: 0.65em 1.25em;
   text-decoration: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba($indigo, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.15s ease, transform 0.15s ease;
 
   &:hover {
+    background-color: $accent-light;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba($indigo, 0.4);
-    color: #fff;
   }
 
   &:focus {
     outline: none;
-    color: #fff;
   }
   &:focus-visible {
-    outline: 2px solid $indigo-dark;
+    outline: 2px solid $accent;
     outline-offset: 2px;
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 1px 4px rgba($indigo, 0.3);
+    background-color: darken($accent, 5%);
   }
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.4;
     transform: none;
-    box-shadow: none;
   }
 }

@@ -6,7 +6,7 @@ body {
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  background-color: $off-white;
+  background-color: $bg-primary;
 }
 
 h1,
@@ -17,13 +17,15 @@ h5,
 h6 {
   font-family: $heading-font-family;
   line-height: $heading-line-height;
-  margin: 0 0 0.75em;
-  color: $dark-gray;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  margin: 0 0 0.6em;
+  color: $text-primary;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 h1 {
 	font-size: modular-scale(5);
+	font-weight: 800;
+	letter-spacing: -0.04em;
 }
 h2 {
 	font-size: modular-scale(4);
@@ -36,50 +38,47 @@ h4 {
 }
 h5 {
 	font-size: modular-scale(0);
-	font-weight: 700;
 }
 h6 {
 	font-size: modular-scale(-1);
-	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: $text-tertiary;
+	font-weight: 600;
 }
 
 p {
   margin: 0 0 $small-spacing;
-  color: $slate;
+  color: $text-secondary;
 }
 
 a {
-  color: $action-color;
+  color: $accent;
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.15s ease;
 
   &:hover {
-    color: $indigo-dark;
-    text-decoration: none;
-    opacity: 0.85;
+    color: $accent-light;
   }
 
   &:active {
-    color: $indigo-dark;
-    opacity: 0.75;
+    color: $accent;
+    opacity: 0.8;
   }
 
   &:focus {
     outline: none;
-    color: $indigo-dark;
   }
   &:focus-visible {
-    outline: 2px solid $indigo;
+    outline: 2px solid $accent;
     outline-offset: 2px;
     border-radius: 2px;
   }
 }
 
 hr {
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
-  border-top: 2px solid $light-gray;
+  border: none;
+  border-top: 1px solid $border-color;
   margin: $base-spacing 0;
 }
 
@@ -90,6 +89,6 @@ picture {
 }
 
 ::selection {
-  background: rgba($indigo, 0.15);
-  color: $dark-gray;
+  background: $accent-dim;
+  color: $text-primary;
 }
