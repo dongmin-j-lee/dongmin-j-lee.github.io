@@ -1,9 +1,10 @@
-// Google Fonts - Modern font pairing
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap);
+// Google Fonts - Clean modern sans-serif
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap);
 
 // Typography
-$base-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-$heading-font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+$base-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$heading-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$mono-font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
 
 // Font Sizes
 $base-font-size: $em-base; // 16px
@@ -12,8 +13,8 @@ $base-font-size: $em-base; // 16px
 $modular-scale-ratio: $minor-third;
 
 // Line height
-$base-line-height: 1.75;
-$heading-line-height: 1.3;
+$base-line-height: 1.7;
+$heading-line-height: 1.2;
 
 // Other Sizes
 $base-border-radius: 12px;
@@ -21,46 +22,65 @@ $button-border-radius: 8px;
 $base-spacing: $base-line-height * $em-base;
 $small-spacing: $base-spacing / 2;
 
-// Modern Color Palette
-$dark-gray: #1a1a2e;
-$medium-gray: #6b7280;
-$light-gray: #e5e7eb;
-$white: #fff;
-$off-white: #f8fafc;
+// Dark Theme Color Palette
+$bg-primary: #09090b;
+$bg-secondary: #18181b;
+$bg-tertiary: #27272a;
+$bg-elevated: #1c1c1f;
 
-// Primary Colors - Elegant Indigo/Violet
-$indigo: #6366f1;
-$indigo-dark: #4f46e5;
+$text-primary: #fafafa;
+$text-secondary: #a1a1aa;
+$text-tertiary: #71717a;
+$text-muted: #52525b;
+
+$border-color: #27272a;
+$border-subtle: rgba(255, 255, 255, 0.06);
+$border-hover: rgba(255, 255, 255, 0.12);
+
+// Accent - Emerald/Cyan
+$accent: #10b981;
+$accent-light: #34d399;
+$accent-dim: rgba(16, 185, 129, 0.15);
+$accent-glow: rgba(16, 185, 129, 0.4);
+
+// Secondary accents
+$cyan: #06b6d4;
 $violet: #8b5cf6;
-$slate: #334155;
-
-// Accent Colors (palette - some reserved for future use)
-$turquoise: #14b8a6;
-$green: #10b981;
-$blue: #3b82f6;
-$purple: #7c3aed;
-$orange: #f59e0b;
-$red: #ef4444;
+$amber: #f59e0b;
 $rose: #f43f5e;
 
+$white: #fff;
+
+// Legacy aliases for compatibility
+$dark-gray: $text-primary;
+$medium-gray: $text-secondary;
+$light-gray: $border-color;
+$off-white: $bg-primary;
+$slate: $text-secondary;
+$indigo: $accent;
+$indigo-dark: darken($accent, 8%);
+
 // Gradient definitions
-$gradient-primary: linear-gradient(135deg, $indigo 0%, $violet 100%);
-$gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$gradient-primary: linear-gradient(135deg, $accent 0%, $cyan 100%);
+$gradient-hero: linear-gradient(135deg, $bg-primary 0%, #0c1220 50%, $bg-primary 100%);
+$gradient-text: linear-gradient(135deg, $accent-light, $cyan);
+$gradient-glow: radial-gradient(ellipse at 50% 0%, $accent-dim 0%, transparent 60%);
 
 // Font Colors
-$base-background-color: $white;
-$base-font-color: $slate;
-$action-color: $indigo;
+$base-background-color: $bg-primary;
+$base-font-color: $text-secondary;
+$action-color: $accent;
 
 // Border
-$base-border-color: $light-gray;
+$base-border-color: $border-color;
 $base-border: 1px solid $base-border-color;
 
-// Shadows
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+// Shadows (dark theme - subtle)
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+$shadow-glow: 0 0 20px $accent-dim;
 
 // Forms
-$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.2);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px $accent-dim;
