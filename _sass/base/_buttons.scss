@@ -3,7 +3,7 @@ button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
   background: $gradient-primary;
-  border-radius: 8px;
+  border-radius: $button-border-radius;
   border: none;
   color: #fff;
   cursor: pointer;

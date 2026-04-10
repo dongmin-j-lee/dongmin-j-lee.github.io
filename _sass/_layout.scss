@@ -146,7 +146,7 @@ pre code.hljs {
 	z-index: 100;
 	border-bottom: 1px solid rgba($light-gray, 0.6);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-	transition: all 0.3s ease;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
 	// Mobile menu button
   .navigation-menu-button {
@@ -202,18 +202,21 @@ pre code.hljs {
   }
   ul.navigation-menu {
     clear: both;
-    display: none;
     margin: 0 auto;
-    overflow: visible;
     padding: 0;
     width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
     @include media ($tablet) {
       display: block;
+      max-height: none;
+      overflow: visible;
       margin: 0;
       padding: 0;
     }
     &.show {
-      display: block;
+      max-height: 500px;
     }
   }
   // Nav items
@@ -704,6 +707,19 @@ pre code.hljs {
 }
 
 /*
+*	Reduced motion
+*/
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/*
 *	Post link styling
 */
 a.post-link {
@@ -720,6 +736,11 @@ a.post-link {
 /*
 *	Scrollbar styling
 */
+html {
+	scrollbar-width: thin;
+	scrollbar-color: rgba($medium-gray, 0.4) $off-white;
+}
+
 ::-webkit-scrollbar {
 	width: 8px;
 }
