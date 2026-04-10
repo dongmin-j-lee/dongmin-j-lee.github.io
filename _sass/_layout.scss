@@ -275,7 +275,10 @@ pre code.hljs {
 	    	text-decoration: none;
 	    	opacity: 1;
 	    	&::after {
-	    		width: calc(100% - 1.5em);
+	    		width: 100%;
+	    		@include media ($tablet) {
+	    			width: calc(100% - 1.5em);
+	    		}
 	    	}
 	    }
 	  }
@@ -284,7 +287,10 @@ pre code.hljs {
     		padding-right: 1em;
     	}
     	&:hover::after {
-    		width: calc(100% - 1em);
+    		width: 100%;
+    		@include media ($tablet) {
+    			width: calc(100% - 1em);
+    		}
     	}
     }
   }
@@ -427,12 +433,6 @@ pre code.hljs {
 			}
 		}
 	}
-	img {
-		display: block;
-		margin: auto;
-		width: 90%;
-		border-radius: 8px;
-	}
 	/*
 	*	Posts
 	*/
@@ -455,6 +455,13 @@ pre code.hljs {
 			margin-top: 1em;
 			box-shadow: $shadow-sm;
 			border: 1px solid rgba($light-gray, 0.5);
+			img {
+				display: block;
+				margin: 1em auto;
+				max-width: 100%;
+				height: auto;
+				border-radius: 8px;
+			}
 		}
 		.tags {
 			font-size: 0.9em;
@@ -630,6 +637,13 @@ pre code.hljs {
 		margin-bottom: 1em;
 		letter-spacing: -0.02em;
 	}
+	// Shared section label style
+	p strong {
+		font-size: 0.85em;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		opacity: 0.8;
+	}
 	/*
 	*	Site Navigation (left)
 	*/
@@ -644,12 +658,6 @@ pre code.hljs {
 		font-size: 0.9em;
 		ul {
 			@extend %default-ul;
-		}
-		p strong {
-			font-size: 0.85em;
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-			opacity: 0.8;
 		}
 	}
 	/*
@@ -679,12 +687,6 @@ pre code.hljs {
 				margin-bottom: 0.3em;
 			}
 		}
-		p strong {
-			font-size: 0.85em;
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-			opacity: 0.8;
-		}
 	}
 	/*
 	*	Site Description/Signature (right)
@@ -701,12 +703,6 @@ pre code.hljs {
 		a {
 			text-decoration: underline;
 			text-underline-offset: 2px;
-		}
-		p strong {
-			font-size: 0.85em;
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-			opacity: 0.8;
 		}
 	}
 }
