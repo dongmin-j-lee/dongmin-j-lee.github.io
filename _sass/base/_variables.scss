@@ -20,7 +20,6 @@ $base-border-radius: 12px;
 $button-border-radius: 8px;
 $base-spacing: $base-line-height * $em-base;
 $small-spacing: $base-spacing / 2;
-$base-z-index: 0;
 
 // Modern Color Palette
 $dark-gray: #1a1a2e;
@@ -53,7 +52,6 @@ $gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 $base-background-color: $white;
 $base-font-color: $slate;
 $action-color: $indigo;
-$highlight-color: $indigo-light;
 
 // Border
 $base-border-color: $light-gray;
