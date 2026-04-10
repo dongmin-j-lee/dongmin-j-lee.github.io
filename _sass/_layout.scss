@@ -34,11 +34,12 @@ ul.default {
 code {
 	background-color: rgba($indigo, 0.08);
 	color: $indigo-dark;
-	display: inline-block;
 	border-radius: 6px;
 	padding: 0.1em 0.4em;
 	font-size: 0.9em;
 	font-weight: 500;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 }
 
 pre code {
@@ -620,9 +621,13 @@ pre code.hljs {
 	    opacity: 1;
 	    text-decoration: none;
 	  }
-	  &:active,
 	  &:focus {
 	    outline: none;
+	  }
+	  &:focus-visible {
+	    outline: 2px solid rgba($white, 0.8);
+	    outline-offset: 2px;
+	    border-radius: 2px;
 	  }
 	}
 	.wrapper {
