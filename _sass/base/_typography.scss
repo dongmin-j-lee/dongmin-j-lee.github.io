@@ -1,10 +1,12 @@
 body {
   @include font-feature-settings("kern", "liga", "pnum");
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
+  background-color: $off-white;
 }
 
 h1,
@@ -14,57 +16,70 @@ h4,
 h5,
 h6 {
   font-family: $heading-font-family;
-  font-size: $base-font-size;
   line-height: $heading-line-height;
-  margin: 0 0 $base-font-size;
-  margin: 0 0 rem($base-font-size);
+  margin: 0 0 0.75em;
+  color: $dark-gray;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 h1 {
-	font-size: modular-scale(4);
+	font-size: modular-scale(5);
 }
 h2 {
-	font-size: modular-scale(3);
+	font-size: modular-scale(4);
 }
 h3 {
-	font-size: modular-scale(2);
+	font-size: modular-scale(3);
 }
 h4 {
-	font-size: modular-scale(1);
+	font-size: modular-scale(2);
 }
 h5 {
-	font-size: modular-scale(-1);
+	font-size: modular-scale(0);
+	font-weight: 700;
 }
 h6 {
-	font-size: modular-scale(-2);
+	font-size: modular-scale(-1);
+	font-weight: 700;
 }
 
 p {
   margin: 0 0 $small-spacing;
+  color: $slate;
 }
 
 a {
   color: $action-color;
   text-decoration: none;
-  // transition: color 0.1s linear;
+  transition: color 0.2s ease, opacity 0.2s ease;
 
-  &:active,
-  &:focus,
   &:hover {
-    color: darken($action-color, 10%);
-    text-decoration: underline;
+    color: $indigo-dark;
+    text-decoration: none;
+    opacity: 0.85;
   }
 
-  &:active,
+  &:active {
+    color: $indigo-dark;
+    opacity: 0.75;
+  }
+
   &:focus {
     outline: none;
+    color: $indigo-dark;
+  }
+  &:focus-visible {
+    outline: 2px solid $indigo;
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
 hr {
-  border-bottom: $base-border;
+  border-bottom: none;
   border-left: none;
   border-right: none;
-  border-top: none;
+  border-top: 2px solid $light-gray;
   margin: $base-spacing 0;
 }
 
@@ -74,6 +89,7 @@ picture {
   max-width: 100%;
 }
 
-code {
-
+::selection {
+  background: rgba($indigo, 0.15);
+  color: $dark-gray;
 }
