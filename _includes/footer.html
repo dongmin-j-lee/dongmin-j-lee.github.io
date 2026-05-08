@@ -2,7 +2,7 @@
 
   <div class="wrapper">
 
-    <h3 class="footer-heading">{{ site.title }}</h3>
+    <h3 class="footer-heading">{{ site.title | escape }}</h3>
 
     <div class="site-navigation">
 
@@ -16,19 +16,21 @@
 
       <p><strong>Contact</strong></p>
       <ul class="social-media-list">
+        {% if site.email %}
         <li>
-          <a href="mailto:{{ site.email }}">
-            <i class="fa fa-envelope-o"></i>
-            <span class="username">{{ site.email }}</span>
+          <a href="mailto:{{ site.email | escape }}">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <span class="username">{{ site.email | escape }}</span>
           </a>
         </li>
+        {% endif %}
 
         {% for social in site.social %}
           {% if social.url != "" %}
           <li>
-            <a href="{{ social.url }}" title="{{ social.desc }}" rel="noopener noreferrer" target="_blank">
-              <i class="fa fa-{{ social.icon }}"></i>
-              <span class="username">{% if social.username %}{{ social.username }}{% else %}{{ social.name }}{% endif %}</span>
+            <a href="{{ social.url | escape }}" title="{{ social.desc | escape }}" rel="noopener noreferrer" target="_blank">
+              <i class="fa fa-{{ social.icon }}" aria-hidden="true"></i>
+              <span class="username">{% if social.username %}{{ social.username | escape }}{% else %}{{ social.name | escape }}{% endif %}</span>
             </a>
           </li>
           {% endif %}
@@ -50,8 +52,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvBLBZFoIhcKEuG+c4k1md2v38gB9NE7t4BKXP1vvi57LMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<!-- Pin exact versions so unpkg can't silently ship a major bump (no SRI available for unpkg auto-resolved tags). -->
+<script src="https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
@@ -68,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.addEventListener('click', function(e) {
       e.preventDefault();
       if (navMenu) {
-        navMenu.classList.toggle('show');
+        var isOpen = navMenu.classList.toggle('show');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       }
     });
   }
@@ -109,16 +113,15 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endif %}
 
 {% if site.ga_tracking_id %}
-<!-- Google Analytics -->
+<!-- Google Analytics 4 (gtag.js). Universal Analytics analytics.js was sunset in 2023. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking_id }}"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', '{{ site.ga_tracking_id }}', 'auto');
-  ga('send', 'pageview', {
-    'page': '{{ page.url }}',
-    'title': '{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}'
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', {{ site.ga_tracking_id | jsonify }}, {
+    page_path: {{ page.url | jsonify }},
+    page_title: {% if page.title %}{{ page.title | jsonify }}{% else %}{{ site.title | jsonify }}{% endif %}
   });
 </script>
 {% endif %}
