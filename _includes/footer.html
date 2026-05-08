@@ -2,7 +2,7 @@
 
   <div class="wrapper">
 
-    <h3 class="footer-heading">{{ site.title }}</h3>
+    <h3 class="footer-heading">{{ site.title | escape }}</h3>
 
     <div class="site-navigation">
 
@@ -16,19 +16,21 @@
 
       <p><strong>Contact</strong></p>
       <ul class="social-media-list">
+        {% if site.email %}
         <li>
-          <a href="mailto:{{ site.email }}">
-            <i class="fa fa-envelope-o"></i>
-            <span class="username">{{ site.email }}</span>
+          <a href="mailto:{{ site.email | escape }}">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <span class="username">{{ site.email | escape }}</span>
           </a>
         </li>
+        {% endif %}
 
         {% for social in site.social %}
           {% if social.url != "" %}
           <li>
-            <a href="{{ social.url }}" title="{{ social.desc }}" rel="noopener noreferrer" target="_blank">
-              <i class="fa fa-{{ social.icon }}"></i>
-              <span class="username">{% if social.username %}{{ social.username }}{% else %}{{ social.name }}{% endif %}</span>
+            <a href="{{ social.url | escape }}" title="{{ social.desc | escape }}" rel="noopener noreferrer" target="_blank">
+              <i class="fa fa-{{ social.icon }}" aria-hidden="true"></i>
+              <span class="username">{% if social.username %}{{ social.username | escape }}{% else %}{{ social.name | escape }}{% endif %}</span>
             </a>
           </li>
           {% endif %}

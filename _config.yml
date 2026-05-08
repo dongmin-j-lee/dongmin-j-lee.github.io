@@ -31,8 +31,10 @@ github_username:  jekyll
 
 # Build settings
 theme: minima
+# Note: feed.xml in the repo root is a custom RSS 2.0 feed; it shadows
+# jekyll-feed's Atom output (jekyll-feed is auto-loaded as a minima theme
+# runtime dependency, which is fine — its output is overwritten by ours).
 plugins:
-  - jekyll-feed
   - jekyll-paginate
 
 # Pagination (jekyll-paginate)
