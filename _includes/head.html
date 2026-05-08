@@ -62,12 +62,12 @@
   <meta name="twitter:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
   {% endif %}
 
-  {% if protocols.os_repo and protocols.os_rcs_type and protocols.os_src %}
+  {% if site.protocols.os_repo and site.protocols.os_rcs_type and site.protocols.os_src %}
   <!-- Open Source Protocol -->
   <link rel="profile" href="https://osprotocol.com" />
-  <meta property="os:repo" content="{{ protocols.os_repo }}" />
-  <meta property="os:rcs_type" content="{{ protocols.os_rcs_type }}" />
-  <meta property="os:src" content="{{ protocols.os_src }}" />
+  <meta property="os:repo" content="{{ site.protocols.os_repo }}" />
+  <meta property="os:rcs_type" content="{{ site.protocols.os_rcs_type }}" />
+  <meta property="os:src" content="{{ site.protocols.os_src }}" />
   {% endif %}
 
   <!-- Site styles -->

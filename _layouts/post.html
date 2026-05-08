@@ -80,12 +80,14 @@ layout: default
       </a>
     {% endif %}
     {% if social.name == "Reddit" and social.share == true %}
-      <a href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent('{{ full_url }}') + '&title={{page.title}}'; return false" rel="noopener noreferrer">
+      <a href="https://www.reddit.com/submit?url={{ full_url | cgi_escape }}&title={{ page.title | cgi_escape }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;" rel="noopener noreferrer">
         <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
       </a>
     {% endif %}
     {% if social.name == "Hacker News" and social.share == true %}
-      <a href="https://news.ycombinator.com/submitlink" onclick="window.location = 'https://news.ycombinator.com/submitlink?u=' + encodeURIComponent('{{ full_url }}') + '&t={{page.title}}'; return false" rel="noopener noreferrer">
+      <a href="https://news.ycombinator.com/submitlink?u={{ full_url | cgi_escape }}&t={{ page.title | cgi_escape }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;" rel="noopener noreferrer">
         <i class="fa fa-{{ social.icon | remove_first: '-square' }} fa-lg"></i>
       </a>
     {% endif %}
